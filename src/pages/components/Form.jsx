@@ -13,17 +13,18 @@ function Form(props) {
         setInput(newValue);
     }
 
+    async function addnewTodo() {
+        let newToDo = await add(input)
+    }
+    
     async function add(content) {
-        console.log("Content is: " + content)
-        const token = await getToken({ template: 'codehooks' });
-        console.log(token); 
+        const token = await getToken({ template: 'codehooks' }); 
         const data = {
             user_Id: userId,
-            item: content, 
+            content: content, 
         }
-        console.log(data)
-        const newTodo = await addToDo(token, data); 
-        
+        const newTodo = await addToDo(token, data);
+        return newTodo;
     }
 
     return (
@@ -36,10 +37,11 @@ function Form(props) {
                         {input === "" ? 
                         console.log("Input is empty")
                         :
+                        addnewTodo()
                         props.onadd(input)
                         setInput("")
-                        add(input)
-                        console.log("Adding input: " + input)
+                        // add(input)
+                        // console.log("Adding input: " + input)
                         }
                     }}
                     type="submit" 

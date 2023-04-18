@@ -11,7 +11,7 @@ import jwtDecode from 'jwt-decode'
 
 const toDoListYup = object({
   user_Id: string().required(),
-  item: string().required(),
+  content: string().required(),
   done: boolean().default(false),
   createdOn: date().default(() => new Date()),
 })
@@ -31,24 +31,24 @@ const userAuth = async (req, res, next) => {
   }
 }
 
-app.use((req, res, next) => {
-  if (req.method === "POST") {
-    // always save authenticating user Id token.
-    // note -- were not enforcing uniqueness which isn't great.
-    // we don't currently have a great way to do this -- one option would be to 
-    // have a user collection track which collections have been filled
-    // It's a limitation for sure, but I'll just make that a front-end problem...
-    req.body.userId = req.user_token.sub
-  } else if (req.method === "GET") {
-    // on "index" -- always check for authentication.
-    req.query.userId = req.user_token.sub
-  }
-  next();
-})
+// app.use((req, res, next) => {
+//   if (req.method === "POST") {
+//     // always save authenticating user Id token.
+//     // note -- were not enforcing uniqueness which isn't great.
+//     // we don't currently have a great way to do this -- one option would be to 
+//     // have a user collection track which collections have been filled
+//     // It's a limitation for sure, but I'll just make that a front-end problem...
+//     req.body.userId = req.user_token.sub
+//   } else if (req.method === "GET") {
+//     // on "index" -- always check for authentication.
+//     req.query.userId = req.user_token.sub
+//   }
+//   next();
+// })
 
 app.use(userAuth)
 // Use Crudlify to create a REST API for any collection
-crudlify(app, { toDoList: toDoListYup })
+crudlify(app, { todos: toDoListYup })
 
 // bind to serverless runtime
 export default app.init();

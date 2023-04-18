@@ -3,9 +3,16 @@ import Header from "./components/Header";
 import { useRouter } from 'next/router'
 import { useAuth, useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 
-export default function Home() {
-  const { isSignedIn, isLoading, user } = useUser();
+export default function HomePage() {
+  const { userId } = useAuth();
+  const { isSignedIn, isLoading } = useUser();
   const router = useRouter()
+  console.log(router)
+
+  function Redirect() {
+    router.push('/todos')
+  }
+
   return (
     <>
       <Header />
@@ -17,11 +24,11 @@ export default function Home() {
             {isSignedIn ? (
               <>
                 {/* redirect to todos */}
-                {router.push('/todos')}
+                <Redirect />
               </>
             ) : (
               <div className={styles.label}>
-                Sign in to create your todo list!
+                <p>Sign in to create your todo list!</p>
               </div>
             )}
           </div>

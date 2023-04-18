@@ -1,12 +1,16 @@
 import Link from "next/link";
+import Header from "./components/Header";
 
-export default function Custom404() {
+export default function Custom404Page() {
   return (
     <div>
-      <h1>404 - Page Not Found</h1>
-      <Link href="/">
-        Go Home
-      </Link>
+      <Header/>
+      <div>
+        <h1>404 - Page Not Found</h1>
+        <Link href="/">
+          Go Home
+        </Link>
+      </div>
     </div>
   );
 }

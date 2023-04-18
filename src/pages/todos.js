@@ -1,10 +1,20 @@
 import ToDoList from "./components/TodoList";
 import Header from "./components/Header";
 import styles from "../styles/Home.module.css";
-import { useAuth, useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { useRouter } from 'next/router'
+import { useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { useEffect } from "react";
 
-export default function todos() {
+export default function TodoPage() {
+
     const { isSignedIn, isLoading, user } = useUser();
+    const router = useRouter(); 
+
+    useEffect(() => {
+        if (!isSignedIn) {
+            router.push('/'); 
+        }
+    })
     return (
         <>
             <Header />
@@ -19,11 +29,7 @@ export default function todos() {
                                 <ToDoList />
                             </>
                         ) : 
-                        (
-                            <div className={styles.label}>
-                                Sign in to create your todo list!
-                            </div>
-                        )
+                        null
                         }
                     </div>
                 </main>
