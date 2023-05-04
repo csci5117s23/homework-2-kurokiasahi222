@@ -3,12 +3,14 @@ import Form from "./Form";
 import TodoItem from "./TodoItem";
 import styles from "../../styles/Home.module.css";
 import { doneToDo } from "@/modules/data";
+import { useAuth, useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 
 // To Do
 // set it up as a to-do widget.
 
 function ToDoList(props) {
-
+    const { isLoaded, userId, getToken } = useAuth();
+    
     const [items, setItems] = useState([]);
     const [doneItems, setDoneItems] = useState([]);
 
