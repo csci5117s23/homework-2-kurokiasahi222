@@ -1,4 +1,4 @@
-function ToDoItem(props) {
+function TodoItem(props) {
     return (
         <div>
             <li>
@@ -13,4 +13,4 @@ function ToDoItem(props) {
     ); 
 }
 
-export default ToDoItem; 
+export default TodoItem; 
