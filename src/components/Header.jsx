@@ -1,4 +1,4 @@
-import styles from "../../styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 import { useAuth, useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Form from "./Form";
 import TodoItem from "./TodoItem";
-import styles from "../../styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 import { doneToDo } from "@/modules/data";
 import { useAuth, useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 

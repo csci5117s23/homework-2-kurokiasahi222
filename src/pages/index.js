@@ -1,5 +1,5 @@
-import styles from "../styles/Home.module.css";
-import Header from "./components/Header";
+import styles from "@/styles/Home.module.css";
+import Header from "@/components/Header";
 import { useRouter } from 'next/router'
 import { useAuth, useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 

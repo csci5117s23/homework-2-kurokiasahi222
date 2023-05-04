@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "@clerk/nextjs";
 import {
     addToDo
-} from "../../modules/data";
+} from "../modules/data";
 
 function Form(props) {
     const { isLoaded, userId, getToken } = useAuth();

@@ -1,6 +1,6 @@
-import ToDoList from "./components/TodoList";
-import Header from "./components/Header";
-import styles from "../styles/Home.module.css";
+import ToDoList from "@/components/TodoList";
+import Header from "@/components/Header";
+import styles from "@/styles/Home.module.css";
 import { useRouter } from 'next/router'
 import { useUser, UserButton, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { useEffect } from "react";
